@@ -13,17 +13,22 @@
             color: #1A1A1A; /* Black text color */
         }
         .hero-background {
-            /* Placeholder for a stunning visual - will be replaced by video/3D later */
-            background-image: url('https://placehold.co/1920x1080/E0E0E0/1A1A1A?text=PO-OV+Luxury+Experience'); /* Lighter placeholder */
-            background-size: cover;
-            background-position: center;
+            position: relative;
             height: 80vh; /* Adjust height as needed */
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
-            overflow: hidden; /* Ensure content doesn't spill */
+        }
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the entire container */
+            z-index: 0;
         }
         .hero-overlay {
             position: absolute;
@@ -31,7 +36,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0.7)); /* Subtle gradient overlay */
+            background: rgba(0, 0, 0, 0.3); /* Dark overlay for better text visibility */
             z-index: 1;
         }
         .hero-content {
@@ -126,7 +131,7 @@
     <header class="bg-white shadow-lg py-4 px-6 md:px-12 fixed w-full z-50">
         <nav class="container mx-auto flex justify-between items-center">
             <a href="#home" class="text-3xl font-bold royal-golden tracking-wider">PO-OV</a>
-            
+
             <div class="hidden md:flex space-x-8">
                 <a href="#home" class="text-gray-700 hover:text-royal-golden-light text-lg font-medium transition duration-200">Home</a>
                 <a href="#solutions" class="text-gray-700 hover:text-royal-golden-light text-lg font-medium transition duration-200">Solutions</a>
@@ -150,14 +155,18 @@
     </header>
 
     <section id="home" class="hero-background relative pt-16">
+        <video class="hero-video" autoplay loop muted>
+            <source src="https://player.vimeo.com/external/528988888.sd.mp4?s=88985b3931161794719c79148f6146dc01472378&profile_id=164" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="text-5xl md:text-7xl font-extrabold text-black leading-tight mb-6 animate-fade-in-up">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6 animate-fade-in-up">
                 PO-OV: Real Estate Reimagined.
                 <span class="royal-golden block mt-2">Immersive Digital Twins.</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-800 mb-10 leading-relaxed animate-fade-in-up delay-100">
-                Transforming architectural plans into interactive 3D digital twins and VR experiences for unparalleled sales & marketing.
+            <p class="text-xl md:text-2xl text-gray-100 mb-10 leading-relaxed animate-fade-in-up delay-100">
+                Transforming India's finest architectural plans into interactive 3D digital twins and VR experiences for unparalleled sales & marketing.
             </p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up delay-200">
                 <a href="#solutions" class="btn-primary">Explore Our Solutions</a>
@@ -170,7 +179,7 @@
         <div class="container mx-auto text-center">
             <h2 class="text-4xl font-bold text-gray-900 mb-12">The Future of Property Showcase is Here.</h2>
             <p class="text-lg text-gray-700 mb-16 max-w-3xl mx-auto">
-                Tired of flat blueprints and limited visualizations? PO-OV brings your properties to life, engaging buyers like never before.
+                Tired of flat blueprints and limited visualizations? PO-OV brings India's luxury properties to life, engaging buyers like never before.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                 <div class="card">
@@ -200,7 +209,7 @@
     <section id="solutions" class="py-20 bg-white px-6 md:px-12">
         <div class="container mx-auto">
             <h2 class="text-4xl font-bold text-gray-900 text-center mb-16">Our Immersive Solutions</h2>
-            
+
             <div class="flex flex-col lg:flex-row items-center lg:space-x-12 mb-20">
                 <div class="lg:w-1/2 mb-8 lg:mb-0">
                     <img src="https://placehold.co/800x450/E0E0E0/1A1A1A?text=VR+Walkthrough+Demo" alt="VR Walkthrough Demo" class="rounded-xl shadow-2xl w-full">
@@ -208,7 +217,7 @@
                 <div class="lg:w-1/2">
                     <h3 class="text-3xl font-semibold royal-golden mb-4">Photorealistic VR & AR Experiences</h3>
                     <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                        Step into your future property with stunningly real virtual tours. Our high-fidelity rendering brings every detail to life, offering real-time walkthroughs with customizable lighting and multi-platform access across web and VR headsets. Engage your audience on an emotional level.
+                        Step into India's most exclusive properties with stunningly real virtual tours. Our high-fidelity rendering brings every detail to life, offering real-time walkthroughs with customizable lighting and multi-platform access across web and VR headsets. Engage your audience on an emotional level.
                     </p>
                     <a href="#contact-section" class="btn-primary">Learn More & Get a Demo</a>
                 </div>
@@ -224,37 +233,37 @@
                         Experience a living, breathing digital replica of your property. Our digital twins go beyond visualization, integrating BIM/CAD data, real-time configurators for materials and layouts, and dynamic data layers for planning, sales, and post-construction management.
                     </p>
                     <a href="#contact-section" class="btn-primary">Discover Digital Twin Power</a>
-
-                    <div class="mt-12 p-6 bg-gray-100 rounded-lg shadow-xl border border-royal-golden">
-                        <h4 class="text-2xl font-semibold royal-golden mb-4">✨ AI Interior Design Assistant ✨</h4>
-                        <p class="text-gray-700 text-base mb-4">Describe your dream room or style, and our AI will suggest design ideas, furniture, and color palettes!</p>
-                        <textarea id="design-prompt" rows="3" class="w-full p-3 rounded-md bg-white border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-royal-golden" placeholder="E.g., 'A modern living room with a cozy feel', 'A minimalist bedroom for a young professional', 'A vibrant kitchen for a family home'"></textarea>
-                        <button id="generate-design-btn" class="btn-primary w-full mt-4 flex items-center justify-center">
-                            Generate Design Ideas
-                            <span id="design-loading-spinner" class="loading-spinner hidden"></span>
-                        </button>
-                        <div id="design-output" class="mt-6 p-4 bg-gray-200 rounded-md text-gray-800 text-sm hidden whitespace-pre-wrap">
-                            </div>
-                        <div id="design-error" class="mt-4 p-3 bg-red-100 text-red-800 rounded-md text-sm hidden border border-red-300">
-                            </div>
-                    </div>
-                    </div>
+                </div>
             </div>
 
-            <div class="flex flex-col lg:flex-row items-center lg:space-x-12">
+            <div class="flex flex-col lg:flex-row items-center lg:space-x-12 mb-20">
                 <div class="lg:w-1/2 mb-8 lg:mb-0">
-                    <img src="https://placehold.co/800x450/E0E0E0/1A1A1A?text=City+Digital+Twin" alt="Urban Digital Twin" class="rounded-xl shadow-2xl w-full">
+                    <img src="https://placehold.co/800x450/E0E0E0/1A1A1A?text=City+Digital+Twin+India" alt="Urban Digital Twin of India" class="rounded-xl shadow-2xl w-full">
                 </div>
                 <div class="lg:w-1/2">
                     <h3 class="text-3xl font-semibold royal-golden mb-4">Urban & Geospatial Digital Twins</h3>
                     <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                        Contextualize your properties within their actual surroundings. We model entire city blocks or districts with accurate terrain and satellite data, providing vital geospatial context for urban planning, large-scale developments, and investor presentations.
+                        Contextualize your properties within the vibrant landscapes of India. We model entire city blocks or districts with accurate terrain and satellite data, providing vital geospatial context for urban planning, large-scale developments, and investor presentations.
                     </p>
-                    <a href="#contact-section" class="btn-primary">Explore City-Scale Solutions</a>
+                    <a href="#contact-section" class="btn-primary">Explore India's Digital Landscape</a>
                 </div>
             </div>
 
-            <div class="text-center mt-20">
+            <div class="mt-12 p-6 bg-gray-100 rounded-lg shadow-xl border border-royal-golden">
+                <h4 class="text-2xl font-semibold royal-golden mb-4">✨ AI Interior Design Assistant ✨</h4>
+                <p class="text-gray-700 text-base mb-4">Describe your dream interior for your property, and our AI will suggest design ideas, furniture, and color palettes inspired by Indian luxury trends!</p>
+                <textarea id="design-prompt" rows="3" class="w-full p-3 rounded-md bg-white border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-royal-golden" placeholder="E.g., 'A luxurious living room with panoramic city views', 'A modern kitchen with premium Indian finishes', 'A serene bedroom inspired by traditional Indian art'"></textarea>
+                <button id="generate-design-btn" class="btn-primary w-full mt-4 flex items-center justify-center">
+                    Generate Design Ideas
+                    <span id="design-loading-spinner" class="loading-spinner hidden"></span>
+                </button>
+                <div id="design-output" class="mt-6 p-4 bg-gray-200 rounded-md text-gray-800 text-sm hidden whitespace-pre-wrap">
+                    </div>
+                <div id="design-error" class="mt-4 p-3 bg-red-100 text-red-800 rounded-md text-sm hidden border border-red-300">
+                    </div>
+            </div>
+
+            <div class="text-center mt-16">
                 <a href="#contact-section" class="btn-secondary text-xl px-10 py-4">Ready to See Your Project Transformed?</a>
             </div>
         </div>
@@ -262,24 +271,24 @@
 
     <section id="projects" class="py-20 bg-gray-100 px-6 md:px-12">
         <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold text-gray-900 mb-12">Our Portfolio of Immersive Real Estate Experiences</h2>
+            <h2 class="text-4xl font-bold text-gray-900 mb-12">Our Portfolio of Immersive Real Estate Experiences Across India</h2>
             <p class="text-lg text-gray-700 mb-16 max-w-3xl mx-auto">
-                Explore how we've brought properties to life for leading developers. Coming soon: detailed case studies!
+                Explore how we've brought some of India's most prestigious properties to life for leading developers. Coming soon: detailed case studies!
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <div class="card">
-                    <img src="https://placehold.co/400x250/B8860B/FFFFFF?text=Project+1" alt="Project Thumbnail" class="mb-4 rounded-lg">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Luxury Residential Tower</h3>
+                    <img src="https://placehold.co/400x250/B8860B/FFFFFF?text=Project+1" alt="Luxury Residential Tower in India" class="mb-4 rounded-lg">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Luxury Residential Tower, Pan-India</h3>
                     <p class="text-gray-600 text-sm">Full VR Walkthrough & Digital Twin</p>
                 </div>
                 <div class="card">
-                    <img src="https://placehold.co/400x250/B8860B/FFFFFF?text=Project+2" alt="Project Thumbnail" class="mb-4 rounded-lg">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Commercial Hub Development</h3>
+                    <img src="https://placehold.co/400x250/B8860B/FFFFFF?text=Project+2" alt="Commercial Hub Development in India" class="mb-4 rounded-lg">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Commercial Hub Development, India</h3>
                     <p class="text-gray-600 text-sm">Urban Digital Twin & Data Visualization</p>
                 </div>
                 <div class="card">
-                    <img src="https://placehold.co/400x250/B8860B/FFFFFF?text=Project+3" alt="Project Thumbnail" class="mb-4 rounded-lg">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Boutique Hotel VR Experience</h3>
+                    <img src="https://placehold.co/400x250/B8860B/FFFFFF?text=Project+3" alt="Boutique Hotel VR Experience in India" class="mb-4 rounded-lg">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Boutique Hotel VR Experience, India</h3>
                     <p class="text-gray-600 text-sm">Interactive Design & Virtual Staging</p>
                 </div>
             </div>
@@ -289,9 +298,9 @@
 
     <section id="about" class="py-20 bg-white px-6 md:px-12">
         <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold text-gray-900 mb-12">About PO-OV: Pioneers in Real Estate Digital Twins</h2>
+            <h2 class="text-4xl font-bold text-gray-900 mb-12">About PO-OV: Pioneers in Real Estate Digital Twins in India</h2>
             <p class="text-lg text-gray-700 mb-8 max-w-4xl mx-auto">
-                Our vision is to revolutionize how the world experiences and interacts with property. Born from a passion for XR and real estate, PO-OV is committed to delivering unparalleled immersive solutions that drive value for developers, architects, and investors.
+                Our vision is to revolutionize how India experiences and interacts with property. Born from a passion for XR and real estate, PO-OV is committed to delivering unparalleled immersive solutions that drive value for developers, architects, and investors across the nation.
             </p>
             <p class="text-lg text-gray-700 mb-16 max-w-4xl mx-auto">
                 We leverage cutting-edge game engine technology, scalable cloud infrastructure, and advanced geospatial data integration to transform complex architectural plans into intuitive, interactive, and photorealistic digital twins.
@@ -302,11 +311,11 @@
 
     <section class="py-20 bg-royal-golden text-white text-center px-6 md:px-12">
         <div class="container mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build the Future of Real Estate Together.</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build the Future of Real Estate in India, Together.</h2>
             <p class="text-xl md:text-2xl mb-10 max-w-4xl mx-auto">
-                Whether you're a developer, architect, or investor, PO-OV can help you visualize, market, and manage properties with unprecedented clarity and impact.
+                Whether you're a developer, architect, or investor across India, PO-OV can help you visualize, market, and manage properties with unprecedented clarity and impact.
             </p>
-            <a href="#contact-section" class="bg-white text-royal-golden hover:bg-gray-100 font-bold py-4 px-12 rounded-full text-xl shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
+            <a href="#contact-section" class="bg-black text-white hover:bg-gray-800 font-bold py-4 px-12 rounded-full text-xl shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
                 Schedule a Consultation
             </a>
         </div>
@@ -314,9 +323,9 @@
 
     <section id="contact-section" class="py-20 bg-gray-100 px-6 md:px-12">
         <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold text-gray-900 mb-12">Get in Touch with PO-OV</h2>
+            <h2 class="text-4xl font-bold text-gray-900 mb-12">Get in Touch with PO-OV - Serving All of India</h2>
             <p class="text-lg text-gray-700 mb-10 max-w-3xl mx-auto">
-                Let's discuss how digital twins can transform your real estate projects. Fill out the form below or reach out directly.
+                Let's discuss how digital twins can transform your real estate projects across India. Fill out the form below or reach out directly.
             </p>
             <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-lg">
                 <form class="space-y-6">
@@ -343,7 +352,7 @@
                         </select>
                     </div>
                     <div>
-                        <textarea placeholder="How can we help you?*" rows="5" class="w-full p-3 rounded-md bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-royal-golden" required></textarea>
+                        <textarea placeholder="How can we help you with your real estate project in India?*" rows="5" class="w-full p-3 rounded-md bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-royal-golden" required></textarea>
                     </div>
                     <div class="flex items-center justify-center">
                         <input type="checkbox" id="privacy-agree" class="form-checkbox h-5 w-5 royal-golden rounded" required>
@@ -354,7 +363,7 @@
             </div>
             <div class="mt-12 text-lg text-gray-700">
                 <p>Email: <a href="mailto:info@po-ov.com" class="hover:text-royal-golden-light transition duration-200">info@po-ov.com</a></p>
-                <p class="mt-2">Phone: <a href="tel:+1234567890" class="hover:text-royal-golden-light transition duration-200">+1 (234) 567-890</a></p>
+                <p class="mt-2">Phone (India): <a href="tel:+919876543210" class="hover:text-royal-golden-light transition duration-200">+91 9876543210</a></p>
             </div>
         </div>
     </section>
@@ -363,7 +372,7 @@
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
                 <h3 class="text-2xl font-bold royal-golden mb-4">PO-OV</h3>
-                <p class="text-sm leading-relaxed text-gray-600">Redefining property showcase with photorealistic VR & AI-powered digital twins.</p>
+                <p class="text-sm leading-relaxed text-gray-600">Redefining property showcase across India with photorealistic VR & AI-powered digital twins.</p>
             </div>
             <div>
                 <h3 class="text-xl font-semibold text-gray-900 mb-4">Quick Links</h3>
@@ -377,7 +386,7 @@
             <div>
                 <h3 class="text-xl font-semibold text-gray-900 mb-4">Get in Touch</h3>
                 <p>Email: <a href="mailto:info@po-ov.com" class="hover:text-royal-golden-light transition duration-200">info@po-ov.com</a></p>
-                <p>Phone: <a href="tel:+1234567890" class="hover:text-royal-golden-light transition duration-200">+1 (234) 567-890</a></p>
+                <p>Phone (India): <a href="tel:+919876543210" class="hover:text-royal-golden-light transition duration-200">+91 9876543210</a></p>
                 <div class="flex justify-center space-x-4 mt-4">
                     <a href="#" class="text-gray-600 hover:text-royal-golden-light transition duration-200">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.107 4.107 0 001.27 5.477A4.072 4.072 0 012 10.425v.053a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.188a11.644 11.644 0 006.29 1.843"></path></svg>
@@ -451,7 +460,7 @@
 
             try {
                 let chatHistory = [];
-                chatHistory.push({ role: "user", parts: [{ text: `Generate interior design suggestions for a room based on the following description: "${prompt}". Include ideas for furniture, color palette, and overall style. Provide the response in a concise, bullet-point format.` }] });
+                chatHistory.push({ role: "user", parts: [{ text: `Generate interior design suggestions for a room based on the following description: "${prompt}". Include ideas for furniture, color palette, and overall style, with a focus on luxury trends in India. Provide the response in a concise, bullet-point format.` }] });
 
                 const payload = { contents: chatHistory };
                 const apiKey = ""; // Canvas will automatically provide this in runtime
