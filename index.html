@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PO-OV: Real Estate Reimagined - Immersive Digital Twins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF; /* White background */
+            color: #1A1A1A; /* Black text color */
+        }
+        .hero-background {
+            /* Placeholder for a stunning visual - will be replaced by video/3D later */
+            background-image: url('https://placehold.co/1920x1080/E0E0E0/1A1A1A?text=PO-OV+Luxury+Experience'); /* Lighter placeholder */
+            background-size: cover;
+            background-position: center;
+            height: 80vh; /* Adjust height as needed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden; /* Ensure content doesn't spill */
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0.7)); /* Subtle gradient overlay */
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 1.5rem;
+        }
+        /* Royal Golden color definition */
+        .royal-golden {
+            color: #B8860B; /* Dark Goldenrod */
+        }
+        .bg-royal-golden {
+            background-color: #B8860B;
+        }
+        .border-royal-golden {
+            border-color: #B8860B;
+        }
+        .hover\:bg-royal-golden-dark:hover {
+            background-color: #A37E0A; /* Slightly darker gold for hover */
+        }
+        .hover\:text-royal-golden-light:hover {
+            color: #DAA520; /* Lighter gold for hover */
+        }
+
+        .btn-primary {
+            @apply bg-royal-golden hover:bg-royal-golden-dark text-white font-semibold py-3 px-8 rounded-full transition duration-300 ease-in-out shadow-lg;
+        }
+        .btn-secondary {
+            @apply bg-transparent border-2 border-royal-golden text-royal-golden hover:bg-royal-golden hover:text-white font-semibold py-3 px-8 rounded-full transition duration-300 ease-in-out;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition duration-300 ease-in-out transform hover:scale-105;
+        }
+        /* Responsive navigation for smaller screens */
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none; /* Hide by default on small screens */
+            }
+            .hamburger-menu {
+                display: block; /* Show hamburger icon */
+            }
+            .nav-links.active {
+                display: flex; /* Show when active */
+                flex-direction: column;
+                position: absolute;
+                top: 64px; /* Below header */
+                left: 0;
+                width: 100%;
+                background-color: #F5F5F5; /* Light background for mobile menu */
+                padding: 1rem 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            .nav-links.active a {
+                padding: 0.75rem 1.5rem;
+                border-bottom: 1px solid rgba(0,0,0,0.1); /* Darker border for light background */
+                color: #1A1A1A; /* Black text */
+            }
+            .nav-links.active a:last-child {
+                border-bottom: none;
+            }
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.3); /* Darker spinner for light background */
+            border-top: 4px solid #B8860B; /* Golden spinner */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Icon styling for the modern look - now applies to images */
+        .feature-icon {
+            width: 80px; /* Adjust size as needed */
+            height: 80px;
+            margin-bottom: 1.5rem; /* mb-6 */
+            border-radius: 50%; /* Make them circular */
+            object-fit: cover; /* Ensure images cover the circular area */
+            box-shadow: 0 0 0 4px #B8860B; /* Royal Golden border */
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <header class="bg-white shadow-lg py-4 px-6 md:px-12 fixed w-full z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#home" class="text-3xl font-bold royal-golden tracking-wider">PO-OV</a>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-royal-golden-light text-lg font-medium transition duration-200">Home</a>
+                <a href="#solutions" class="text-gray-700 hover:text-royal-golden-light text-lg font-medium transition duration-200">Solutions</a>
+                <a href="#projects" class="text-gray-700 hover:text-royal-golden-light text-lg font-medium transition duration-200">Projects</a>
+                <a href="#about" class="text-gray-700 hover:text-royal-golden-light text-lg font-medium transition duration-200">About Us</a>
+                <a href="#contact-section" class="text-gray-700 hover:text-royal-golden-light text-lg font-medium transition duration-200">Contact</a>
+            </div>
+
+            <button class="hamburger-menu md:hidden text-gray-700 hover:text-royal-golden-light focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+
+        <div id="mobile-menu" class="nav-links md:hidden bg-gray-100 w-full absolute top-full left-0 hidden flex-col items-center py-4">
+            <a href="#home" class="block text-gray-800 hover:text-royal-golden-light text-lg font-medium py-2 px-4 w-full text-center">Home</a>
+            <a href="#solutions" class="block text-gray-800 hover:text-royal-golden-light text-lg font-medium py-2 px-4 w-full text-center">Solutions</a>
+            <a href="#projects" class="block text-gray-800 hover:text-royal-golden-light text-lg font-medium py-2 px-4 w-full text-center">Projects</a>
+            <a href="#about" class="block text-gray-800 hover:text-royal-golden-light text-lg font-medium py-2 px-4 w-full text-center">About Us</a>
+            <a href="#contact-section" class="block text-gray-800 hover:text-royal-golden-light text-lg font-medium py-2 px-4 w-full text-center">Contact</a>
+        </div>
+    </header>
+
+    <section id="home" class="hero-background relative pt-16">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-black leading-tight mb-6 animate-fade-in-up">
+                PO-OV: Real Estate Reimagined.
+                <span class="royal-golden block mt-2">Immersive Digital Twins.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-800 mb-10 leading-relaxed animate-fade-in-up delay-100">
+                Transforming architectural plans into interactive 3D digital twins and VR experiences for unparalleled sales & marketing.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up delay-200">
+                <a href="#solutions" class="btn-primary">Explore Our Solutions</a>
+                <a href="#contact-section" class="btn-secondary">Request a Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-poov" class="py-20 bg-gray-100 px-6 md:px-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12">The Future of Property Showcase is Here.</h2>
+            <p class="text-lg text-gray-700 mb-16 max-w-3xl mx-auto">
+                Tired of flat blueprints and limited visualizations? PO-OV brings your properties to life, engaging buyers like never before.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="card">
+                    <img src="https://placehold.co/80x80/B8860B/FFFFFF?text=VR" alt="Person wearing VR headset" class="feature-icon">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Immersive VR Walkthroughs</h3>
+                    <p class="text-gray-600">Step into your future property, virtually, from anywhere in the world.</p>
+                </div>
+                <div class="card">
+                    <img src="https://placehold.co/80x80/B8860B/FFFFFF?text=3D" alt="Detailed 3D building model" class="feature-icon">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Photorealistic Digital Twins</h3>
+                    <p class="text-gray-600">Accurate, interactive, and stunning recreations of your real estate assets.</p>
+                </div>
+                <div class="card">
+                    <img src="https://placehold.co/80x80/B8860B/FFFFFF?text=Sales" alt="Upward trending sales chart" class="feature-icon">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Accelerate Sales Cycles</h3>
+                    <p class="text-gray-600">Engage prospects deeply, reduce decision time, and boost conversions.</p>
+                </div>
+                <div class="card">
+                    <img src="https://placehold.co/80x80/B8860B/FFFFFF?text=Collab" alt="People collaborating on a digital interface" class="feature-icon">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Enhanced Collaboration</h3>
+                    <p class="text-gray-600">Facilitate seamless design reviews and stakeholder alignment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="py-20 bg-white px-6 md:px-12">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-gray-900 text-center mb-16">Our Immersive Solutions</h2>
+            
+            <div class="flex flex-col lg:flex-row items-center lg:space-x-12 mb-20">
+                <div class="lg:w-1/2 mb-8 lg:mb-0">
+                    <img src="https://placehold.co/800x450/E0E0E0/1A1A1A?text=VR+Walkthrough+Demo" alt="VR Walkthrough Demo" class="rounded-xl shadow-2xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-3xl font-semibold royal-golden mb-4">Photorealistic VR & AR Experiences</h3>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        Step into your future property with stunningly real virtual tours. Our high-fidelity rendering brings every detail to life, offering real-time walkthroughs with customizable lighting and multi-platform access across web and VR headsets. Engage your audience on an emotional level.
+                    </p>
+                    <a href="#contact-section" class="btn-primary">Learn More & Get a Demo</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row-reverse items-center lg:space-x-reverse lg:space-x-12 mb-20">
+                <div class="lg:w-1/2 mb-8 lg:mb-0">
+                    <img src="https://placehold.co/800x450/E0E0E0/1A1A1A?text=Digital+Twin+Data" alt="Digital Twin Data Visualization" class="rounded-xl shadow-2xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-3xl font-semibold royal-golden mb-4">Interactive 3D Digital Twins</h3>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        Experience a living, breathing digital replica of your property. Our digital twins go beyond visualization, integrating BIM/CAD data, real-time configurators for materials and layouts, and dynamic data layers for planning, sales, and post-construction management.
+                    </p>
+                    <a href="#contact-section" class="btn-primary">Discover Digital Twin Power</a>
+
+                    <div class="mt-12 p-6 bg-gray-100 rounded-lg shadow-xl border border-royal-golden">
+                        <h4 class="text-2xl font-semibold royal-golden mb-4">✨ AI Interior Design Assistant ✨</h4>
+                        <p class="text-gray-700 text-base mb-4">Describe your dream room or style, and our AI will suggest design ideas, furniture, and color palettes!</p>
+                        <textarea id="design-prompt" rows="3" class="w-full p-3 rounded-md bg-white border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-royal-golden" placeholder="E.g., 'A modern living room with a cozy feel', 'A minimalist bedroom for a young professional', 'A vibrant kitchen for a family home'"></textarea>
+                        <button id="generate-design-btn" class="btn-primary w-full mt-4 flex items-center justify-center">
+                            Generate Design Ideas
+                            <span id="design-loading-spinner" class="loading-spinner hidden"></span>
+                        </button>
+                        <div id="design-output" class="mt-6 p-4 bg-gray-200 rounded-md text-gray-800 text-sm hidden whitespace-pre-wrap">
+                            </div>
+                        <div id="design-error" class="mt-4 p-3 bg-red-100 text-red-800 rounded-md text-sm hidden border border-red-300">
+                            </div>
+                    </div>
+                    </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center lg:space-x-12">
+                <div class="lg:w-1/2 mb-8 lg:mb-0">
+                    <img src="https://placehold.co/800x450/E0E0E0/1A1A1A?text=City+Digital+Twin" alt="Urban Digital Twin" class="rounded-xl shadow-2xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-3xl font-semibold royal-golden mb-4">Urban & Geospatial Digital Twins</h3>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        Contextualize your properties within their actual surroundings. We model entire city blocks or districts with accurate terrain and satellite data, providing vital geospatial context for urban planning, large-scale developments, and investor presentations.
+                    </p>
+                    <a href="#contact-section" class="btn-primary">Explore City-Scale Solutions</a>
+                </div>
+            </div>
+
+            <div class="text-center mt-20">
+                <a href="#contact-section" class="btn-secondary text-xl px-10 py-4">Ready to See Your Project Transformed?</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-gray-100 px-6 md:px-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12">Our Portfolio of Immersive Real Estate Experiences</h2>
+            <p class="text-lg text-gray-700 mb-16 max-w-3xl mx-auto">
+                Explore how we've brought properties to life for leading developers. Coming soon: detailed case studies!
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="card">
+                    <img src="https://placehold.co/400x250/B8860B/FFFFFF?text=Project+1" alt="Project Thumbnail" class="mb-4 rounded-lg">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Luxury Residential Tower</h3>
+                    <p class="text-gray-600 text-sm">Full VR Walkthrough & Digital Twin</p>
+                </div>
+                <div class="card">
+                    <img src="https://placehold.co/400x250/B8860B/FFFFFF?text=Project+2" alt="Project Thumbnail" class="mb-4 rounded-lg">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Commercial Hub Development</h3>
+                    <p class="text-gray-600 text-sm">Urban Digital Twin & Data Visualization</p>
+                </div>
+                <div class="card">
+                    <img src="https://placehold.co/400x250/B8860B/FFFFFF?text=Project+3" alt="Project Thumbnail" class="mb-4 rounded-lg">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Boutique Hotel VR Experience</h3>
+                    <p class="text-gray-600 text-sm">Interactive Design & Virtual Staging</p>
+                </div>
+            </div>
+            <a href="#contact-section" class="btn-primary mt-12">View All Projects (Coming Soon!)</a>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white px-6 md:px-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12">About PO-OV: Pioneers in Real Estate Digital Twins</h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-4xl mx-auto">
+                Our vision is to revolutionize how the world experiences and interacts with property. Born from a passion for XR and real estate, PO-OV is committed to delivering unparalleled immersive solutions that drive value for developers, architects, and investors.
+            </p>
+            <p class="text-lg text-gray-700 mb-16 max-w-4xl mx-auto">
+                We leverage cutting-edge game engine technology, scalable cloud infrastructure, and advanced geospatial data integration to transform complex architectural plans into intuitive, interactive, and photorealistic digital twins.
+            </p>
+            <a href="#contact-section" class="btn-secondary text-xl px-10 py-4">Learn More About Our Journey</a>
+        </div>
+    </section>
+
+    <section class="py-20 bg-royal-golden text-white text-center px-6 md:px-12">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build the Future of Real Estate Together.</h2>
+            <p class="text-xl md:text-2xl mb-10 max-w-4xl mx-auto">
+                Whether you're a developer, architect, or investor, PO-OV can help you visualize, market, and manage properties with unprecedented clarity and impact.
+            </p>
+            <a href="#contact-section" class="bg-white text-royal-golden hover:bg-gray-100 font-bold py-4 px-12 rounded-full text-xl shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
+                Schedule a Consultation
+            </a>
+        </div>
+    </section>
+
+    <section id="contact-section" class="py-20 bg-gray-100 px-6 md:px-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12">Get in Touch with PO-OV</h2>
+            <p class="text-lg text-gray-700 mb-10 max-w-3xl mx-auto">
+                Let's discuss how digital twins can transform your real estate projects. Fill out the form below or reach out directly.
+            </p>
+            <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                <form class="space-y-6">
+                    <div>
+                        <input type="text" placeholder="Full Name*" class="w-full p-3 rounded-md bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-royal-golden" required>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Company Name*" class="w-full p-3 rounded-md bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-royal-golden" required>
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Email Address*" class="w-full p-3 rounded-md bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-royal-golden" required>
+                    </div>
+                    <div>
+                        <input type="tel" placeholder="Phone Number (Optional)" class="w-full p-3 rounded-md bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-royal-golden">
+                    </div>
+                    <div>
+                        <select class="w-full p-3 rounded-md bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-royal-golden">
+                            <option value="">Industry (Select One)</option>
+                            <option value="developer">Real Estate Developer</option>
+                            <option value="architect">Architect</option>
+                            <option value="designer">Interior Designer</option>
+                            <option value="investor">Investor</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <textarea placeholder="How can we help you?*" rows="5" class="w-full p-3 rounded-md bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-royal-golden" required></textarea>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <input type="checkbox" id="privacy-agree" class="form-checkbox h-5 w-5 royal-golden rounded" required>
+                        <label for="privacy-agree" class="ml-2 text-gray-600 text-sm">I agree to the <a href="#" class="royal-golden hover:underline">Privacy Policy</a>.</label>
+                    </div>
+                    <button type="submit" class="btn-primary w-full">Submit Inquiry</button>
+                </form>
+            </div>
+            <div class="mt-12 text-lg text-gray-700">
+                <p>Email: <a href="mailto:info@po-ov.com" class="hover:text-royal-golden-light transition duration-200">info@po-ov.com</a></p>
+                <p class="mt-2">Phone: <a href="tel:+1234567890" class="hover:text-royal-golden-light transition duration-200">+1 (234) 567-890</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-100 py-12 px-6 md:px-12 text-gray-700 text-center">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-2xl font-bold royal-golden mb-4">PO-OV</h3>
+                <p class="text-sm leading-relaxed text-gray-600">Redefining property showcase with photorealistic VR & AI-powered digital twins.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#solutions" class="hover:text-royal-golden-light transition duration-200">Solutions</a></li>
+                    <li><a href="#projects" class="hover:text-royal-golden-light transition duration-200">Projects</a></li>
+                    <li><a href="#about" class="hover:text-royal-golden-light transition duration-200">About Us</a></li>
+                    <li><a href="#contact-section" class="hover:text-royal-golden-light transition duration-200">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Get in Touch</h3>
+                <p>Email: <a href="mailto:info@po-ov.com" class="hover:text-royal-golden-light transition duration-200">info@po-ov.com</a></p>
+                <p>Phone: <a href="tel:+1234567890" class="hover:text-royal-golden-light transition duration-200">+1 (234) 567-890</a></p>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <a href="#" class="text-gray-600 hover:text-royal-golden-light transition duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.107 4.107 0 001.27 5.477A4.072 4.072 0 012 10.425v.053a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.188a11.644 11.644 0 006.29 1.843"></path></svg>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-royal-golden-light transition duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.402 2.865 8.18 6.83 9.504.475.087.64-.205.64-.455 0-.223-.009-.814-.013-1.594-2.782.602-3.369-1.34-3.369-1.34-.454-1.158-1.11-1.465-1.11-1.465-.908-.62.068-.608.068-.608 1.007.07 1.532 1.03 1.532 1.03.892 1.53 2.341 1.088 2.91.832.092-.646.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.09.39-1.984 1.029-2.685-.103-.253-.447-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.701.115 2.502.338 1.909-1.295 2.747-1.025 2.747-1.025.546 1.378.202 2.397.099 2.65.64.701 1.028 1.595 1.028 2.685 0 3.843-2.339 4.687-4.566 4.935.359.307.678.915.678 1.846 0 1.338-.012 2.419-.012 2.747 0 .25.163.549.645.454C20.146 20.19 23 16.413 23 12.017 23 6.484 18.522 2 13 2h-1z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-royal-golden-light transition duration-200">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.776-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22H12c5.523 0 10-4.477 10-10z" clip-rule="evenodd"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 border-t border-gray-200 pt-8">
+            <p>&copy; 2025 PO-OV. All rights reserved. | <a href="#" class="hover:text-royal-golden-light">Privacy Policy</a> | <a href="#" class="hover:text-royal-golden-light">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) { // Check if the target element exists before scrolling
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                } else {
+                    console.error(`Element with ID ${targetId} not found.`);
+                }
+
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Toggle mobile menu visibility
+        document.querySelector('.hamburger-menu').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.toggle('active'); // Add active class for styling
+        });
+
+        // ✨ AI Interior Design Assistant Logic ✨
+        document.getElementById('generate-design-btn').addEventListener('click', async () => {
+            const promptInput = document.getElementById('design-prompt');
+            const outputDiv = document.getElementById('design-output');
+            const errorDiv = document.getElementById('design-error');
+            const loadingSpinner = document.getElementById('design-loading-spinner');
+            const prompt = promptInput.value.trim();
+
+            outputDiv.classList.add('hidden');
+            errorDiv.classList.add('hidden');
+            outputDiv.textContent = ''; // Clear previous output
+            errorDiv.textContent = ''; // Clear previous errors
+
+            if (!prompt) {
+                errorDiv.textContent = 'Please enter a description for your room design.';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
+            loadingSpinner.classList.remove('hidden'); // Show loading spinner
+            document.getElementById('generate-design-btn').disabled = true; // Disable button
+
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: `Generate interior design suggestions for a room based on the following description: "${prompt}". Include ideas for furniture, color palette, and overall style. Provide the response in a concise, bullet-point format.` }] });
+
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // Canvas will automatically provide this in runtime
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    outputDiv.textContent = text;
+                    outputDiv.classList.remove('hidden');
+                } else {
+                    errorDiv.textContent = 'Failed to generate design ideas. Please try again.';
+                    errorDiv.classList.remove('hidden');
+                    console.error('Gemini API response structure unexpected:', result);
+                }
+            } catch (error) {
+                errorDiv.textContent = `An error occurred: ${error.message}. Please try again later.`;
+                errorDiv.classList.remove('hidden');
+                console.error('Error calling Gemini API:', error);
+            } finally {
+                loadingSpinner.classList.add('hidden'); // Hide loading spinner
+                document.getElementById('generate-design-btn').disabled = false; // Re-enable button
+            }
+        });
+    </script>
+</body>
+</html>
